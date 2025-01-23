@@ -2,6 +2,9 @@ import "./App.css";
 import NewUserFormPage from "./pages/NewUserFormPage";
 import LoginFormPage from "./pages/LoginFormPage";
 import UserPage from "./pages/UserPage";
+import UserPhotoPost from "./components/user/UserPhotoPost";
+import Feed from "./components/feed/Feed";
+import UserStats from "./components/user/UserStats";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import { UserStorage } from "./contexts/UserContext";
@@ -20,8 +23,11 @@ function App() {
                 <ProtectedRoute>
                   <UserPage />
                 </ProtectedRoute>
-              }
-            />
+              }>
+              <Route path="/conta/feed" element={<Feed />} />
+              <Route path="/conta/postar" element={<UserPhotoPost />} />
+              <Route path="/conta/estatisticas" element={<UserStats />} />
+            </Route>
             <Route path="/login" element={<LoginFormPage />} />
             <Route path="/cadastro" element={<NewUserFormPage />} />
           </Routes>
